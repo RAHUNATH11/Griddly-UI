@@ -1,0 +1,29 @@
+.logs-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.logs-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.logs-header, .logs-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logs-header {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.logs-row:hover {
+  background-color: #f9f9f9;
+}

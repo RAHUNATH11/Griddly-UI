@@ -1,3 +1,4 @@
+// src/pages/Login.jsx
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -16,6 +17,9 @@ const Login = () => {
     try {
       const res = await axios.post('http://localhost:8080/api/users/login', form);
       const role = res.data.role;
+      const userId = res.data.userId;
+
+      localStorage.setItem('userId', userId); // ✅ store userId
 
       if (role === 'ADMIN') {
         localStorage.setItem('isAdmin', 'true');
@@ -34,37 +38,14 @@ const Login = () => {
   return (
     <form className="formContainer" onSubmit={handleSubmit}>
       <h2 className="heading">Login</h2>
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        required
-        className="input"
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={handleChange}
-        required
-        className="input"
-      />
-      <select
-        name="role"
-        value={form.role}
-        onChange={handleChange}
-        required
-        className="select"
-      >
+      <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required className="input" />
+      <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required className="input" />
+      <select name="role" value={form.role} onChange={handleChange} required className="select">
         <option value="">Select Role</option>
         <option value="ADMIN">Admin</option>
         <option value="STAFF">Staff</option>
       </select>
       <button type="submit" className="button">Login</button>
-
       <p className="signupText">
         Don’t have an account? <Link to="/signup" className="signupLink">Sign up</Link>
       </p>

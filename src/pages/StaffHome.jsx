@@ -9,6 +9,7 @@ const StaffHome = () => {
         <Link to="/add-product" style={linkStyle}>➕ Add Product</Link>
         <br />
         <Link to="/pick-product" style={linkStyle}>📦 Pick Product</Link>
+        <Link to="/Layout" style={linkStyle}>Warehouse Layout</Link>
       </div>
     </div>
   );
